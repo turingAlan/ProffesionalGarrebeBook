@@ -1,0 +1,23 @@
+.list{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0;
+}
+
+.list .logo{
+    margin-right: auto;
+    padding: 20px;
+    margin-left: 16px;
+}
+
+.list .navigate{
+    padding:20px 30px;
+    color: aliceblue;
+
+}
+
+.list .navigate:last-child{
+    margin-right: 16px;
+}
