@@ -2,8 +2,16 @@ const { default: Image } = require("next/image")
 const { default: Link } = require("next/link")
 import kahta from "../../public/Khatabook.svg.png"
 import Styles from "../styles/Navigation.module.css"
-const Navigation  = ()=>{
+import { useRouter } from "next/router"
+import { useSelector, useDispatch } from 'react-redux'
+
+
+const Navigation  = (props)=>{
+
+    const loginStatus = useSelector((state)=> state.login.value)
+    const router  = useRouter()
     return(
+       
         <ul className={Styles.list}>
         <li className={Styles.logo}>
             
@@ -16,12 +24,14 @@ const Navigation  = ()=>{
         </li>
         
         <li  className={Styles.navigate}>
-        Hisab
-            
+        hello
         </li>
         
         <li className={Styles.navigate}>
-            Hisab
+        <Link href="/signup">
+            {loginStatus?"loggedin":"login"}
+        </Link>
+           
         </li>
         
         <li className={Styles.navigate}>

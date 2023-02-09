@@ -4,15 +4,21 @@ import val from "validate.js"
  const Validate = (name,money,reason)=>{   
     console.log("works") 
     var constraints = {
-        naam:{
-            presence:true,
+        name:{
+            presence:{
+                allowEmpty:false,
+                message:"cannnot be empty"
+            },
             length:{
-                maximum:10,
-                message:"Name must of maximum of 10 characters"
+                maximum:20,
+                message:"Name must of maximum of 20 characters"
             }
         },
         money:{
-            presence:true,
+            presence:{
+                allowEmpty:false,
+                message:"cannnot be empty"
+            },
             length:{
                 maximum:7,
                 message:"Input cannot exceed maximum of 99 lakhs"
@@ -22,15 +28,15 @@ import val from "validate.js"
                 message:"Only numbers accepted in money section"
             }
         },
-        kaam:{
+        reason:{
             length:{
                 maximum:30,
-                message:"Input cannot exceed 30 characters"
+                message:"Input cannot exceed 60 characters"
             }
         }
     }
 
-    return(val({naam:name,money:money,kaam:reason},constraints))
+    return(val({name:name,money:money,reason:reason},constraints))
 }
 
 export default Validate

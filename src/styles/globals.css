@@ -10,7 +10,7 @@ li{
 
 body{
   flex: 1;
-  background-color: seagreen;
+  background-color: #DEEFE7;
   margin: 0;
   padding: 0;
 }
@@ -22,7 +22,7 @@ ul{
 /* Input */
 .input-container{
   border: cyan 2px solid;
-  width: 70%;
+  width: 100%;
   border-radius: 20px;
   padding-left: 30px;
   padding-bottom: 20px;
@@ -56,13 +56,20 @@ ul{
    
 }
 
+.error{
+  color: red;
+  font-size:smaller ;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 /* hisab kitab section */
 
 .io-container{
   display: flex;
   flex:1;
   flex-direction: row;
-  background-color: lightgray;
   border-radius: 20;
   width: 100%;
 }
@@ -112,6 +119,10 @@ background: linear-gradient(121deg, rgba(208,210,221,1) 11%, rgba(73,137,152,1) 
   -webkit-user-select: none;
   touch-action: manipulation;
   margin:20px 0;
+}
+
+.button-disabled{
+  background-color: grey;
 }
 
 .button:focus {
