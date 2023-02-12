@@ -2,7 +2,6 @@ import Input from "@/components/Input";
 import val from "validate.js"
 
  const Validate = (name,money,reason)=>{   
-    console.log("works") 
     var constraints = {
         name:{
             presence:{

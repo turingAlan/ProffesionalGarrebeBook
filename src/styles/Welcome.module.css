@@ -1,0 +1,61 @@
+.logo{
+    text-align: center;
+    font-size: 55px;
+    color: #1E232E;
+    font-weight: 900;
+    font-size: 60px;
+    margin:0 0 50px;
+    letter-spacing: 6px;
+}
+
+.alignWelcome{
+    
+}
+
+.welcomeContainer{
+    width: 50%;
+    margin:0 auto;
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 60px 0;
+
+}
+
+.backroundImage{
+    padding-left: 28px;
+    padding-top: 50px;
+    background: linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,.4)), url("../../public/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin:10px;
+    border-radius: 10px; 
+}
+
+.welcomeName{
+    color: #13678A;
+    font-size: 45px;
+}
+
+.welcome{
+    margin-bottom: 0;
+    
+
+}
+
+.description{
+    text-align: center;
+    margin: 0px auto;
+    line-height:2;
+    width: 80%;
+    border: 0.5px black solid;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    color:#400036
+
+
+}
+
+.gareebStatus{
+    margin-top: 50px;
+}

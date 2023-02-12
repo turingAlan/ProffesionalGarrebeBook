@@ -8,10 +8,12 @@ export const loginSlice = createSlice({
     name:null
   },
   reducers: {
-    login: (state,uid,name) => {
+    login: (state,uid) => {
       state.isLogin = true,
-      state.uid = uid,
-      state.name = name
+      state.uid = uid.payload
+    },
+    nameSet:(state,name)=>{
+      state.name = name.payload
     },
     logout: state => {
       state.isLogin = false,
@@ -21,6 +23,6 @@ export const loginSlice = createSlice({
   }
 })
 
-export const { login, logout } = loginSlice.actions
+export const { login, logout,nameSet } = loginSlice.actions
 
 export default loginSlice.reducer
