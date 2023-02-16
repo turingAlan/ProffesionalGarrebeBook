@@ -12,7 +12,7 @@ import { async } from "validate.js";
 import { dataBase, firebaseApp } from "./firebase";
 import { runTransaction } from "firebase/firestore";
 
-const addData = (uid, name, data) => {
+const addData = async (uid, name, data) => {
   const transactStatus = `${data.status}Money`;
   const otherTransactStatus = `${data.otherStatus}Money`;
   const AddData = async () => {
@@ -36,6 +36,7 @@ const addData = (uid, name, data) => {
       try {
         await updateDoc(docRef, {
           [data.status]: arrayUnion(data.dataArray[0]),
+          [data.dataArray[0].name]: arrayUnion(data.dataArray[0]),
         });
         console.log("Document updated with ID: ", docRef.id);
         alert("Hisab updated");
@@ -51,6 +52,7 @@ const addData = (uid, name, data) => {
           [data.otherStatus]: [],
           [transactStatus]: data.dataArray[0].amount,
           [otherTransactStatus]: 0,
+          [data.dataArray[0].name]: [data.dataArray[0]],
         });
         console.log("Document written with ID: ", docRef.id);
         alert("Hisab added");
@@ -61,7 +63,13 @@ const addData = (uid, name, data) => {
     }
   };
 
-  AddData();
+  await AddData();
 };
 
-export { addData };
+const getData = async (datafeild, uid) => {
+  const docRef = doc(dataBase, "hisab", uid);
+  const docSnap = await getDoc(docRef);
+  return docSnap.data()[datafeild];
+};
+
+export { addData, getData };

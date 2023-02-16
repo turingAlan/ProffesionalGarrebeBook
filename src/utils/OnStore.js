@@ -1,27 +1,50 @@
-import { useSelector } from "react-redux";
 import { addData } from "./sampleFirebase";
 
-const OnSubmit = (uid, userName, isGiven, givenTo, amount, reason, date) => {
+const OnSubmit = async (
+  uid,
+  userName,
+  isGiven,
+  givenTo,
+  amount,
+  reason,
+  date,
+  onChange,
+  callback
+) => {
   if (isGiven === "Gave") {
     const data = {
       dataArray: [
-        { name: givenTo, amount: amount, reason: reason, date: date },
+        {
+          name: givenTo,
+          amount: amount,
+          reason: reason,
+          date: date,
+          lendingStatus: true,
+        },
       ],
       status: "given",
       otherStatus: "taken",
     };
-    addData(uid, userName, data);
+    await addData(uid, userName, data);
+    onChange((prev) => !prev);
   }
   if (isGiven !== "Gave") {
     const data = {
       dataArray: [
-        { name: givenTo, amount: amount, reason: reason, date: date },
+        {
+          name: givenTo,
+          amount: amount,
+          reason: reason,
+          date: date,
+          lendingStatus: false,
+        },
       ],
       status: "taken",
       otherStatus: "given",
     };
-    addData(uid, userName, data);
+    await addData(uid, userName, data);
   }
+  callback();
 };
 
 export default OnSubmit;

@@ -51,11 +51,29 @@
     border-radius: 10px;
     font-size: 20px;
     font-weight: 500;
-    color:#400036
+    color:#400036;
+    background-color: rgba(251, 248, 248, 0.3);
 
 
 }
 
 .gareebStatus{
     margin-top: 50px;
+}
+
+.takenOrGivenBox{
+    background-color: pink;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 10px 5px 6px rgba(0, 0, 0, 0.3);
+}
+
+.takenOrGivenContatiner{
+    display: flex;
+    justify-content: space-evenly;
+
 }

@@ -6,21 +6,11 @@
     margin: 0 10px 12px 0;
     box-shadow: 10px 5px 6px rgba(0, 0, 0, 0.3);;
     border-radius: 10px;
+    justify-content: space-evenly;
+    width: 40%;
+    background-color: pink;
 }
 
-.list .logo{
-    margin-right: auto;
-    padding: 20px;
-    margin-left: 16px;
+.listHeader{
+    position: static;
 }
-
-.list .navigate{
-    padding:20px 30px;
-    color: black;
-
-}
-
-.list .navigate:last-child{
-    margin-right: 16px;
-}
-

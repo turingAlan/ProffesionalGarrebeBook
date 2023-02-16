@@ -5,9 +5,11 @@ import styles from "@/styles/Home.module.css";
 import Navigation from "@/components/Navigation";
 import MoneySection from "@/components/MoneySection";
 import WelcomeSection from "@/components/WelcomeSection";
+import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [dataChange, setDataChange] = useState(false);
   return (
     <>
       <Head>
@@ -17,10 +19,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navigation />
-      <WelcomeSection />
+      <WelcomeSection onChange={dataChange} />
       <div class="io-container">
-        <MoneySection section="Gave" />
-        <MoneySection section="Took" />
+        <MoneySection section="Gave" setChange={setDataChange} />
+        <MoneySection section="Took" setChange={setDataChange} />
       </div>
     </>
   );

@@ -3,9 +3,10 @@ const { default: LoginToGo } = require("./LoginToGo");
 const { default: MoneyStatus } = require("./MoneyStatus");
 import Styles from "../styles/Welcome.module.css";
 
-const WelcomeSection = () => {
+const WelcomeSection = ({ onChange }) => {
   const isLogin = useSelector((state) => state.login.isLogin);
   const Name = useSelector((state) => state.login.name);
+  const uid = useSelector((state) => state.login.uid);
   let userName = "Guest";
 
   if (Name) {
@@ -27,13 +28,13 @@ const WelcomeSection = () => {
           </h2>
           <p className={Styles.description}>
             {" "}
-            to garreb book we cannot make to you rich but we definetly make you
+            to garreb book we cannot make you rich but we definetly make you
             feel chor like by keeping a record about how many people you have
             taken money from and not given to them{" "}
           </p>
         </div>
       </div>
-      {isLogin ? <MoneyStatus name={Name} /> : <LoginToGo />}
+      {isLogin ? <MoneyStatus name={Name} uid={uid} /> : <LoginToGo />}
     </div>
   );
 };

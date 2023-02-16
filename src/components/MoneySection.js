@@ -7,11 +7,15 @@ import { MdOutlineDateRange } from "react-icons/md";
 import Validate from "../utils/Validation.js";
 import { Context } from "@/utils/Context.js";
 import sampleFirebase, { addData } from "@/utils/sampleFirebase.js";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import OnSubmit from "@/utils/OnStore.js";
+import { changeClicked } from "slices/loginSlice.js";
+import { async } from "validate.js";
 
 const MoneySection = (props) => {
+  const dispatch = useDispatch();
   const uid = useSelector((state) => state.login.uid);
+  const clicked = useSelector((state) => state.clicked);
   const userName = useSelector((state) => state.login.name);
   const [name, setName] = useState("");
   const [money, setMoney] = useState("");
@@ -19,6 +23,10 @@ const MoneySection = (props) => {
   const [date, setDate] = useState("");
   const [check, setCheck] = useState(true);
   const [error, setError] = useState("");
+
+  const changeClick = () => {
+    dispatch(changeClicked());
+  };
   const dateCheck = () => {
     const currentDate = new Date();
     var month = "" + (currentDate.getMonth() + 1),
@@ -44,6 +52,21 @@ const MoneySection = (props) => {
       />
     );
   };
+
+  const onClick = async () => {
+    await OnSubmit(
+      uid,
+      userName,
+      props.section,
+      name,
+      money,
+      reason,
+      date,
+      props.setChange,
+      changeClick
+    );
+  };
+
   useEffect(() => {
     setError(Validate(name, money, reason));
   }, [name, reason, money]);
@@ -111,9 +134,9 @@ const MoneySection = (props) => {
             type="submit"
             value="Submit"
             disabled={error}
-            onClick={() =>
-              OnSubmit(uid, userName, props.section, name, money, reason, date)
-            }
+            onClick={() => {
+              onClick();
+            }}
           />
           <h1></h1>
         </form>
