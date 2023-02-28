@@ -21,8 +21,8 @@ export default function Home() {
       <Navigation />
       <WelcomeSection onChange={dataChange} />
       <div class="io-container">
-        <MoneySection section="Gave" setChange={setDataChange} />
-        <MoneySection section="Took" setChange={setDataChange} />
+        <MoneySection section="Gave" setChange={setDataChange} status="add" />
+        <MoneySection section="Took" setChange={setDataChange} status="add" />
       </div>
     </>
   );

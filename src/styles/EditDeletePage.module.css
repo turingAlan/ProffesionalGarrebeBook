@@ -1,0 +1,39 @@
+.editPage{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    background-color: rgba(207, 210, 215, 0.9);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    justify-content: center;
+}
+
+.closeButton{
+    position: absolute;
+    top: 0;
+    right: 30px;
+    user-select: none;
+}
+
+.closeButton:hover{
+    color:rgb(22, 193, 223);
+}
+
+.removeContainer{
+    width: 60%;
+    border: 1px black solid;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-self: center;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+

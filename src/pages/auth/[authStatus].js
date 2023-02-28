@@ -18,6 +18,7 @@ import Link from "next/link";
 import Styles from "../../styles/Auth.module.css";
 import Navigation from "@/components/Navigation";
 import { doc, getDoc } from "firebase/firestore";
+import { HashLoader } from "react-spinners";
 
 const Auth = () => {
   const router = useRouter();
@@ -29,7 +30,9 @@ const Auth = () => {
   const [error, setError] = useState("");
   const [userName, setName] = useState("");
   const [uid, setUid] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const onClick = () => {
+    setIsLoading(true);
     if (authStatus === "login") {
       signInWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
@@ -39,6 +42,7 @@ const Auth = () => {
           dispatch(nameSet(userName));
           console.log("user exist and sucessfully logged in");
           dispatch(login(userCredential.user.uid));
+          setIsLoading(false);
           router.push(
             {
               pathname: "/",
@@ -47,6 +51,7 @@ const Auth = () => {
           );
         })
         .catch((error) => {
+          setIsLoading(false);
           setError(error);
         });
       console.log(error);
@@ -59,7 +64,7 @@ const Auth = () => {
           setUid(userCredential.user.uid);
           dispatch(login(userCredential.user.uid));
           dispatch(nameSet(userName));
-
+          setIsLoading(false);
           router.push(
             {
               pathname: "/",
@@ -144,6 +149,11 @@ const Auth = () => {
           </div>
         </Link>
       </div>
+      {isLoading ? (
+        <div className={Styles.loading}>
+          <HashLoader color="black" size={80} />
+        </div>
+      ) : null}
     </div>
   );
 };

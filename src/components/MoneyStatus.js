@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Styles from "../styles/Welcome.module.css";
 import Button from "./Button";
 import TotalGivenOrTaken from "./TotalGivenOrTaken";
@@ -12,7 +13,9 @@ const MoneyStatus = ({ name, uid, onChange }) => {
         </h1>
         <div className={Styles.takenOrGivenContatiner}>
           <TotalGivenOrTaken status="givenMoney" uid={uid} />
-          <Button type="text" value="Detailed hisab" />
+          <Link href="details/Profile">
+            <Button type="text" value="Detailed hisab" />
+          </Link>
           <TotalGivenOrTaken status="takenMoney" uid={uid} />
         </div>
       </div>

@@ -28,9 +28,9 @@ const WelcomeSection = ({ onChange }) => {
           </h2>
           <p className={Styles.description}>
             {" "}
-            to garreb book we cannot make you rich but we definetly make you
-            feel chor like by keeping a record about how many people you have
-            taken money from and not given to them{" "}
+            here at garreb book we cannot make you rich but we definetly make
+            you feel chor like by keeping a record about how many people you
+            have taken money from and not given to them{" "}
           </p>
         </div>
       </div>

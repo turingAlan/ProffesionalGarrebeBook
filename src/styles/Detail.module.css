@@ -4,13 +4,54 @@
     flex-direction: row;
     justify-content: center;
     margin: 0 10px 12px 0;
-    box-shadow: 10px 5px 6px rgba(0, 0, 0, 0.3);;
     border-radius: 10px;
     justify-content: space-evenly;
-    width: 40%;
-    background-color: pink;
+}
+
+.listElement{
+    flex:1
 }
 
 .listHeader{
+    box-shadow: 10px 5px 8px rgba(0, 0, 0, 0.4);
     position: static;
+    
+}
+
+.listHeader .listElement{
+    font-weight: bold;
+    font-size: 22px;
+    
+}
+
+.listContainer{
+    width: 48%;
+}
+
+.hover{
+    opacity: 0.2;
+}
+
+.hoverDiv{
+    position: relative;
+    width: 8%;
+    margin-left: auto;
+    bottom: 21.8px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 0px;
+    line-height: 0px;
+}
+
+.bothListContainer{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.hisabDescription{
+    font-size: 40px;
+    text-align: center;
+    padding: 30px;
+    color: rgb(141, 74, 204);
 }

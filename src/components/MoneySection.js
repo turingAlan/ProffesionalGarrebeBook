@@ -3,19 +3,16 @@ const { default: Button } = require("./Button");
 const { default: Input } = require("./Input");
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { BiRupee, BiQuestionMark } from "react-icons/bi";
-import { MdOutlineDateRange } from "react-icons/md";
 import Validate from "../utils/Validation.js";
-import { Context } from "@/utils/Context.js";
-import sampleFirebase, { addData } from "@/utils/sampleFirebase.js";
 import { useDispatch, useSelector } from "react-redux";
 import OnSubmit from "@/utils/OnStore.js";
 import { changeClicked } from "slices/loginSlice.js";
-import { async } from "validate.js";
+import HashLoader from "react-spinners/HashLoader.js";
+import { deleteData, editData } from "@/utils/sampleFirebase.js";
 
 const MoneySection = (props) => {
   const dispatch = useDispatch();
   const uid = useSelector((state) => state.login.uid);
-  const clicked = useSelector((state) => state.clicked);
   const userName = useSelector((state) => state.login.name);
   const [name, setName] = useState("");
   const [money, setMoney] = useState("");
@@ -23,6 +20,7 @@ const MoneySection = (props) => {
   const [date, setDate] = useState("");
   const [check, setCheck] = useState(true);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const changeClick = () => {
     dispatch(changeClicked());
@@ -54,17 +52,36 @@ const MoneySection = (props) => {
   };
 
   const onClick = async () => {
-    await OnSubmit(
-      uid,
-      userName,
-      props.section,
-      name,
-      money,
-      reason,
-      date,
-      props.setChange,
-      changeClick
-    );
+    setIsLoading(true);
+    const dataObject = {
+      name: props.name,
+      amount: props.money,
+      reason: props.reason,
+      date: props.date,
+      lendingStatus: props.section === "given" ? true : false,
+      status: props.section,
+    };
+    const newDataObject = {
+      name: name,
+      amount: money,
+      reason: reason,
+      date: date,
+      lendingStatus: props.section === "given" ? true : false,
+    };
+    props.status !== "edit"
+      ? await OnSubmit(
+          uid,
+          userName,
+          props.section,
+          name,
+          money,
+          reason,
+          date,
+          props.setChange,
+          changeClick
+        )
+      : await editData(uid, dataObject, newDataObject);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -89,7 +106,7 @@ const MoneySection = (props) => {
           <Input
             value={name}
             setValue={setName}
-            palceholder="Enter the name"
+            palceholder={props.name || "Enter the name"}
             type="text"
             label="Name"
             labelFor="name"
@@ -100,7 +117,7 @@ const MoneySection = (props) => {
           <Input
             value={money}
             setValue={setMoney}
-            palceholder="Enter the amount"
+            palceholder={props.money || "Enter the amount"}
             type="text"
             label="Money"
             labelFor="money"
@@ -111,7 +128,7 @@ const MoneySection = (props) => {
           <Input
             value={reason}
             setValue={setReason}
-            palceholder="Enter the reason"
+            palceholder={props.reason || "Enter the reason"}
             type="text"
             label="Reason"
             labelFor="reason"
@@ -120,24 +137,25 @@ const MoneySection = (props) => {
             required={false}
           />
           <Input
-            value={date}
+            value={props.date || date}
             setValue={setDate}
             palceholder="Enter the reason"
             type="date"
             label="Date"
-            labelFor="Deason"
+            labelFor="Date"
             icon={dateCheck}
             error={error}
             required={false}
           />
           <Button
             type="submit"
-            value="Submit"
+            value={props.status === "edit" ? "Edit" : "Submit"}
             disabled={error}
             onClick={() => {
               onClick();
             }}
           />
+          {isLoading ? <HashLoader size="21" color="blue" /> : null}
           <h1></h1>
         </form>
       </fieldset>

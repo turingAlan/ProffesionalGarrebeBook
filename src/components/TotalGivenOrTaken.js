@@ -13,7 +13,6 @@ const TotalGivenOrTaken = (props) => {
   useEffect(() => {
     const redeclare = async () => {
       await getData(props.status, props.uid).then((value) => setMoney(value));
-      console.log("works");
     };
     redeclare();
   }, [clicked]);
