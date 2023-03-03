@@ -37,9 +37,7 @@ const TotalList = (props) => {
             />
           );
         })}
-        <div>
-          <h1>Total = {props.totalMoney}</h1>
-        </div>
+        <h1 style={{ textAlign: "center" }}>Total = ₹{props.totalMoney}</h1>
       </fieldset>
     </>
   );

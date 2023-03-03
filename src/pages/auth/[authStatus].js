@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { AiOutlineUserAdd } from "react-icons/ai";
-import { MdPassword } from "react-icons/Md";
+import { MdPassword } from "react-icons/md";
 const { default: Input } = require("@/components/Input");
 
 import {

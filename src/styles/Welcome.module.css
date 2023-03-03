@@ -14,10 +14,14 @@
 
 .welcomeContainer{
     width: 50%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 50%;
     margin:0 auto;
     text-align: center;
     letter-spacing: 1px;
-    padding: 60px 0;
+    padding: 30px 0 70px 0;
 
 }
 
@@ -47,12 +51,12 @@
     margin: 0px auto;
     line-height:2;
     width: 80%;
-    border: 0.5px black solid;
     border-radius: 10px;
+    font-weight: 800;
     font-size: 20px;
     font-weight: 500;
     color:#400036;
-    background-color: rgba(251, 248, 248, 0.3);
+    background-color: rgba(251, 248, 248, 0.5);
 
 
 }
@@ -62,14 +66,13 @@
 }
 
 .takenOrGivenBox{
-    background-color: rgb(244, 242, 242);
     width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    box-shadow: 10px 5px 6px rgba(0, 0, 0, 0.3);
+    
 }
 
 .takenOrGivenContatiner{

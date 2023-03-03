@@ -1,7 +1,6 @@
 import { Prosto_One } from "@next/font/google";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { async } from "validate.js";
 import Styles from "../styles/Welcome.module.css";
 
 const { getData } = require("@/utils/sampleFirebase");
@@ -18,10 +17,12 @@ const TotalGivenOrTaken = (props) => {
   }, [clicked]);
 
   return (
-    <div className={Styles.takenOrGivenBox}>
-      <h2> {props.status}</h2>
-      <h3>{money} </h3>
-    </div>
+    <fieldset className={Styles.takenOrGivenBox}>
+      <legend style={{ fontSize: 25, fontWeight: "bold" }}>
+        {props.status}
+      </legend>
+      <h2>{money} </h2>
+    </fieldset>
   );
 };
 

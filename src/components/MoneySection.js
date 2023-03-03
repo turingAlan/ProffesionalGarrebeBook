@@ -32,7 +32,6 @@ const MoneySection = (props) => {
       year = currentDate.getFullYear();
     if (month.length < 2) month = "0" + month;
     if (day.length < 2) day = "0" + day;
-    setDate([year, month, day].join("-"));
 
     return (
       <input
@@ -42,9 +41,8 @@ const MoneySection = (props) => {
         checked={check}
         onChange={(e) => {
           setCheck(!check);
-          if (!check) {
-            console.log(check);
-            setDate("2023-02-03");
+          if (check) {
+            setDate([year, month, day].join("-"));
           }
         }}
       />
@@ -139,7 +137,6 @@ const MoneySection = (props) => {
           <Input
             value={props.date || date}
             setValue={setDate}
-            palceholder="Enter the reason"
             type="date"
             label="Date"
             labelFor="Date"
