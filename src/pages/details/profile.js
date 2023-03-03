@@ -1,7 +1,5 @@
 const { useState, useEffect } = require("react");
-import ListElement from "@/components/ListElement";
 import PageLayout from "@/components/PageLayout";
-import TotalGivenOrTaken from "@/components/TotalGivenOrTaken";
 import TotalList from "@/components/TotalList";
 import { getData } from "@/utils/sampleFirebase";
 import { useSelector } from "react-redux";
@@ -26,21 +24,27 @@ const Profile = (props) => {
 
   return (
     <PageLayout>
-      <h1 className={Styles.hisabDescription}>Your current hisab list is</h1>
-      <div className={Styles.bothListContainer}>
-        <TotalList
-          array={givenArray}
-          status="given"
-          setUpdateList={setUpdateList}
-          totalMoney={givenMoney}
-        />
-        <TotalList
-          array={takenArray}
-          status="taken"
-          setUpdateList={setUpdateList}
-          totalMoney={takenMoney}
-        />
-      </div>
+      {uid ? (
+        <>
+          <h1 className={Styles.hisabDescription}>
+            Your current hisab list is
+          </h1>
+          <div className={Styles.bothListContainer}>
+            <TotalList
+              array={givenArray}
+              status="given"
+              setUpdateList={setUpdateList}
+              totalMoney={givenMoney}
+            />
+            <TotalList
+              array={takenArray}
+              status="taken"
+              setUpdateList={setUpdateList}
+              totalMoney={takenMoney}
+            />
+          </div>
+        </>
+      ) : null}
     </PageLayout>
   );
 };
