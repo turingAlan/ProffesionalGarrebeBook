@@ -8,6 +8,7 @@ const OnSubmit = async (
   amount,
   reason,
   date,
+  onChange,
   callback
 ) => {
   const UserName =
@@ -30,7 +31,7 @@ const OnSubmit = async (
       otherStatus: "taken",
     };
     await addData(uid, UserName, data);
-    // onChange((prev) => !prev);
+    onChange((prev) => !prev);
   }
   if (isGiven !== "Gave") {
     const data = {
