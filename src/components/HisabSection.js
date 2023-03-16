@@ -10,6 +10,7 @@ function HisabSection() {
   const isLogin = useSelector((state) => state.login.isLogin);
   const Name = useSelector((state) => state.login.name);
   const uid = useSelector((state) => state.login.uid);
+  const [dataChange, setDataChange] = useState(false);
 
   return (
     <div className={Styles.container}>
@@ -51,7 +52,7 @@ function HisabSection() {
             Taken
           </h2>
         </div>
-        <MoneySection section={status} status="add" />
+        <MoneySection section={status} status="add" onChange={setDataChange} />
       </div>
     </div>
   );

@@ -24,7 +24,6 @@ const MoneySection = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [showList, setShowList] = useState(false);
   const [knownPersonArray, setKnownPersonArray] = useState([]);
-  const [dataChange, setDataChange] = useState(false);
 
   const changeClick = () => {
     dispatch(changeClicked());
@@ -142,7 +141,7 @@ const MoneySection = (props) => {
           money,
           reason,
           date,
-          props.setChange,
+          props.onChange,
           changeClick
         )
       : await editData(uid, dataObject, newDataObject);
