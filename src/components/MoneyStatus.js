@@ -7,10 +7,30 @@ const MoneyStatus = ({ name, uid, onChange }) => {
   return (
     <div>
       <div className={Styles.gareebStatus}>
-        <h1 style={{ textAlign: "center" }}>
+        <h1
+          style={{
+            textAlign: "center",
+            fontSize: "2.5rem",
+            margin: 0,
+            textAlign: "left",
+            display: "inline",
+          }}
+        >
           {name.slice(0, 1).toUpperCase()}
-          {name.slice(1)},<span> your current Garrebe status </span>
+          {name.slice(1)}
         </h1>
+        <h2
+          style={{
+            textAlign: "center",
+            fontSize: "2.5rem",
+            margin: 0,
+            textAlign: "left",
+            display: "inline",
+            fontWeight: "500",
+          }}
+        >
+          , your current Garrebe status{" "}
+        </h2>
         <div className={Styles.takenOrGivenContatiner}>
           <TotalGivenOrTaken status="givenMoney" uid={uid} />
           <Link href="details/Profile">

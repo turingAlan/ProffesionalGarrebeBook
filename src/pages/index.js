@@ -6,10 +6,10 @@ import Navigation from "@/components/Navigation";
 import MoneySection from "@/components/MoneySection";
 import WelcomeSection from "@/components/WelcomeSection";
 import { useState } from "react";
+import HisabSeciton from "@/components/HisabSection";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [dataChange, setDataChange] = useState(false);
   return (
     <>
       <Head>
@@ -19,10 +19,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navigation />
-      <WelcomeSection onChange={dataChange} />
+      <WelcomeSection />
       <div class="io-container">
-        <MoneySection section="Gave" setChange={setDataChange} status="add" />
-        <MoneySection section="Took" setChange={setDataChange} status="add" />
+        <HisabSeciton />
       </div>
     </>
   );

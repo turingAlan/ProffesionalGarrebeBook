@@ -7,6 +7,7 @@ export const loginSlice = createSlice({
     uid: null,
     name: null,
     clicked: false,
+    theme: "light",
   },
   reducers: {
     login: (state, uid) => {
@@ -21,9 +22,13 @@ export const loginSlice = createSlice({
     changeClicked: (state) => {
       state.clicked = !state.clicked;
     },
+    changeTheme: (state, theme) => {
+      state.theme = theme.payload;
+    },
   },
 });
 
-export const { login, logout, nameSet, changeClicked } = loginSlice.actions;
+export const { login, logout, nameSet, changeClicked, changeTheme } =
+  loginSlice.actions;
 
 export default loginSlice.reducer;

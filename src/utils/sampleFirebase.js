@@ -34,6 +34,7 @@ const addData = async (uid, name, data) => {
         await updateDoc(docRef, {
           [data.status]: arrayUnion(data.dataArray[0]),
           [data.dataArray[0].name]: arrayUnion(data.dataArray[0]),
+          knownPersonArray: arrayUnion(data.dataArray[0].name),
         });
         console.log("Document updated with ID: ", docRef.id);
         alert("Hisab updated");
@@ -50,6 +51,7 @@ const addData = async (uid, name, data) => {
           [transactStatus]: data.dataArray[0].amount,
           [otherTransactStatus]: 0,
           [data.dataArray[0].name]: [data.dataArray[0]],
+          knownPersonArray: [data.dataArray[0].name],
         });
         console.log("Document written with ID: ", docRef.id);
         alert("Hisab added");

@@ -1,10 +1,11 @@
 const { default: Image } = require("next/image");
 const { default: Link } = require("next/link");
-import kahta from "../../public/Khatabook.svg.png";
 import Styles from "../styles/Navigation.module.css";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineUser } from "react-icons/ai";
+import ThemeToggle from "./ThemeToggle";
+import Logo from "./Logo";
 
 const Navigation = (props) => {
   const loginStatus = useSelector((state) => state.login.isLogin);
@@ -17,11 +18,13 @@ const Navigation = (props) => {
     <ul className={Styles.list}>
       <li className={Styles.logo}>
         <Link href="/">
-          <Image src={kahta} alt="Hisab" width={230} height={55} />
+          <Logo />
         </Link>
       </li>
 
-      <li className={Styles.navigate}>hello</li>
+      <li className={Styles.navigate}>
+        <ThemeToggle />
+      </li>
 
       <li className={Styles.navigate}>Hisab</li>
       <li className={Styles.navigate}>

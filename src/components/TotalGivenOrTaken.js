@@ -17,12 +17,12 @@ const TotalGivenOrTaken = (props) => {
   }, [clicked]);
 
   return (
-    <fieldset className={Styles.takenOrGivenBox}>
-      <legend style={{ fontSize: 25, fontWeight: "bold" }}>
-        {props.status}
-      </legend>
-      <h2>{money} </h2>
-    </fieldset>
+    <div className={Styles.takenOrGivenBox}>
+      <h2 className={Styles.takenGivenHeading}>
+        {props.status === "givenMoney" ? "Given" : "Taken"}
+      </h2>
+      <h1 className={Styles.money}>₹{money} </h1>
+    </div>
   );
 };
 

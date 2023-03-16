@@ -1,59 +1,58 @@
-.list{
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 0 10px 12px 0;
-    border-radius: 10px;
-    justify-content: space-evenly;}
-
-.listElement{
-    flex:1
+.list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 10px 12px 0;
+  border-radius: 10px;
+  justify-content: space-evenly;
 }
 
-
-
-.listHeader{
-    box-shadow: 10px 5px 8px rgba(0, 0, 0, 0.4);
-    position: static;
+.listElement {
+  flex: 1;
+  font-size: 1.3rem;
+  font-weight: 500;
 }
 
-
-.listHeader .listElement{
-    font-weight: bold;
-    font-size: 22px;
-    
+.listHeader {
+  box-shadow: var(--color-box-shadow);
+  position: static;
 }
 
-.listContainer{
-    width: 48%;
+.listHeader .listElement {
+  font-weight: bold;
+  font-size: 22px;
 }
 
-.hover{
-    opacity: 0.2;
+.listContainer {
+  width: 48%;
 }
 
-.hoverDiv{
-    position: relative;
-    width: 8%;
-    margin-left: auto;
-    bottom: 21.8px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 0px;
-    line-height: 0px;
+.hover {
+  opacity: 0.2;
 }
 
-.bothListContainer{
-    display: flex;
-    justify-content: space-evenly;
-    height: 70%;
+.hoverDiv {
+  position: relative;
+  width: 8%;
+  margin-left: auto;
+  bottom: 21.8px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 0px;
+  line-height: 0px;
 }
 
-.hisabDescription{
-    font-size: 40px;
-    text-align: center;
-    padding: 30px;
-    color: rgb(26, 14, 38);
+.bothListContainer {
+  display: flex;
+  justify-content: space-evenly;
+  height: 70%;
+}
+
+.hisabDescription {
+  font-size: 40px;
+  text-align: center;
+  padding: 30px;
+  color: rgb(26, 14, 38);
 }

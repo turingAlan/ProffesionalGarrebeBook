@@ -8,7 +8,7 @@ import RemovePage from "./RemovePage";
 import { useSelector } from "react-redux";
 
 const ListElement = (props) => {
-  const [clicked, setClicked] = useState(false);
+  const [ReasonExpand, setReasonExpand] = useState(false);
   const [hover, setHover] = useState(false);
   const [edit, setEdit] = useState(false);
   const [remove, setRemove] = useState(false);
@@ -39,19 +39,23 @@ const ListElement = (props) => {
           }
         >
           <li className={Styles.listElement}>₹{props.money}</li>
-          <li className={Styles.listElement}>{props.name}</li>
+          <Link href={`people/${props.name}`}>
+            <li className={Styles.listElement}>{props.name}</li>
+          </Link>
           {props.isHeader ? (
             <li className={Styles.listElement}>{reason}</li>
           ) : (
             <li
               style={{ userSelect: "none" }}
-              onClick={() => setClicked((prevState) => !prevState)}
+              onClick={() => setReasonExpand((prevState) => !prevState)}
               className={Styles.listElement}
             >
-              {clicked ? props.reason : reason}
+              {ReasonExpand ? props.reason : reason}
             </li>
           )}
-          <li className={Styles.listElement}>{props.date}</li>
+          <li className={Styles.listElement}>
+            {props.date ? props.date : "Yaad nahi"}
+          </li>
         </ul>
         {hover && !props.isHeader ? (
           <div className={Styles.hoverDiv}>

@@ -10,14 +10,20 @@ const Input = (props) => {
   };
   return (
     <div
-      style={{ width: "100%", alignContent: "center", paddingBottom: "20px" }}
+      style={{
+        width: props.width ? props.width : "100%",
+        alignContent: "center",
+        paddingBottom: "20px",
+      }}
     >
       <fieldset className="input-container">
         {props.label ? (
           <legend>
             <h2 className="input-label">
               {props.label}
-              {props.required ? "*" : null}
+              <span style={{ color: "red" }}>
+                {props.required ? "*" : null}
+              </span>
             </h2>
           </legend>
         ) : null}

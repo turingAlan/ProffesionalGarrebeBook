@@ -1,4 +1,4 @@
-const { useState, useContext, useEffect } = require("react");
+const { useState, useEffect } = require("react");
 const { default: Button } = require("./Button");
 const { default: Input } = require("./Input");
 import { AiOutlineUserAdd } from "react-icons/ai";
@@ -8,12 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import OnSubmit from "@/utils/OnStore.js";
 import { changeClicked } from "slices/loginSlice.js";
 import HashLoader from "react-spinners/HashLoader.js";
-import { deleteData, editData } from "@/utils/sampleFirebase.js";
+import { editData, getData } from "@/utils/sampleFirebase.js";
 
 const MoneySection = (props) => {
   const dispatch = useDispatch();
   const uid = useSelector((state) => state.login.uid);
   const userName = useSelector((state) => state.login.name);
+  const clicked = useSelector((state) => state.login.clicked);
   const [name, setName] = useState("");
   const [money, setMoney] = useState("");
   const [reason, setReason] = useState("");
@@ -21,10 +22,72 @@ const MoneySection = (props) => {
   const [check, setCheck] = useState(true);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showList, setShowList] = useState(false);
+  const [knownPersonArray, setKnownPersonArray] = useState([]);
 
   const changeClick = () => {
     dispatch(changeClicked());
   };
+
+  useEffect(() => {
+    const redeclare = async () => {
+      await getData("knownPersonArray", uid).then((value) =>
+        setKnownPersonArray(value)
+      );
+      console.log("clicked");
+    };
+    redeclare();
+  }, [clicked]);
+
+  const UserList = () => {
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          position: "relative",
+        }}
+      >
+        <AiOutlineUserAdd
+          onClick={() => setShowList((prevValue) => !prevValue)}
+          className="knownPersonLogo"
+        />
+        {showList ? (
+          <div
+            style={{
+              position: "absolute",
+              backgroundColor: "white",
+              width: "5rem",
+              height: "4.8rem",
+              overflow: "auto",
+              top: "1.2rem",
+              left: "0.8rem",
+            }}
+          >
+            <ul>
+              {knownPersonArray.map((value) => {
+                return (
+                  <li
+                    style={{ userSelect: "none" }}
+                    className="knownPersonListItem"
+                    key={value}
+                    onClick={(e) => {
+                      setName(e.target.innerText);
+                      setShowList(false);
+                    }}
+                  >
+                    {value}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ) : null}
+      </div>
+    );
+  };
+
   const dateCheck = () => {
     const currentDate = new Date();
     var month = "" + (currentDate.getMonth() + 1),
@@ -32,6 +95,9 @@ const MoneySection = (props) => {
       year = currentDate.getFullYear();
     if (month.length < 2) month = "0" + month;
     if (day.length < 2) day = "0" + day;
+    if (check) {
+      setDate([year, month, day].join("-"));
+    }
 
     return (
       <input
@@ -75,8 +141,8 @@ const MoneySection = (props) => {
           money,
           reason,
           date,
-          props.setChange,
-          changeClick
+          // props.setChange,
+          changeClick()
         )
       : await editData(uid, dataObject, newDataObject);
     setIsLoading(false);
@@ -88,19 +154,8 @@ const MoneySection = (props) => {
 
   return (
     <div className="io">
-      <fieldset className="border-io">
-        <legend>
-          <h1 style={{ margin: 0 }}>{props.section}</h1>
-        </legend>
-        <form
-          style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-          onSubmit={(e) => e.preventDefault()}
-        >
+      <form className="border-io" onSubmit={(e) => e.preventDefault()}>
+        <div className="form-row">
           <Input
             value={name}
             setValue={setName}
@@ -108,9 +163,10 @@ const MoneySection = (props) => {
             type="text"
             label="Name"
             labelFor="name"
-            icon={AiOutlineUserAdd}
+            icon={UserList}
             error={error}
             required={true}
+            width="45%"
           />
           <Input
             value={money}
@@ -122,7 +178,10 @@ const MoneySection = (props) => {
             icon={BiRupee}
             error={error}
             required={true}
+            width="45%"
           />
+        </div>
+        <div className="form-row">
           <Input
             value={reason}
             setValue={setReason}
@@ -133,6 +192,7 @@ const MoneySection = (props) => {
             icon={BiQuestionMark}
             error={error}
             required={false}
+            width="45%"
           />
           <Input
             value={props.date || date}
@@ -143,19 +203,19 @@ const MoneySection = (props) => {
             icon={dateCheck}
             error={error}
             required={false}
+            width="45%"
           />
-          <Button
-            type="submit"
-            value={props.status === "edit" ? "Edit" : "Submit"}
-            disabled={error}
-            onClick={() => {
-              onClick();
-            }}
-          />
-          {isLoading ? <HashLoader size="21" color="blue" /> : null}
-          <h1></h1>
-        </form>
-      </fieldset>
+        </div>
+        <Button
+          type="submit"
+          value={props.status === "edit" ? "Edit" : "Submit"}
+          disabled={error}
+          onClick={() => {
+            onClick();
+          }}
+        />
+        {isLoading ? <HashLoader size="21" color="blue" /> : null}
+      </form>
     </div>
   );
 };

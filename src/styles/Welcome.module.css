@@ -1,82 +1,113 @@
-.logo{
-    text-align: center;
-    font-size: 55px;
-    color: #1E232E;
-    font-weight: 900;
-    font-size: 60px;
-    margin:0 0 50px;
-    letter-spacing: 6px;
+.logo {
+  text-align: center;
+  font-size: 6rem;
+  font-weight: 500;
+  margin: 0 0 3rem;
+  letter-spacing: 0.8rem;
 }
 
-.alignWelcome{
-    
+.alignWelcome {
+  height: 90vh;
 }
 
-.welcomeContainer{
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    height: 50%;
-    margin:0 auto;
-    text-align: center;
-    letter-spacing: 1px;
-    padding: 30px 0 70px 0;
-
+.welcomeContainer {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 50%;
+  margin: 0 auto;
+  text-align: center;
+  letter-spacing: 1px;
+  padding: 30px 0 70px 0;
 }
 
-.backroundImage{
-    padding-left: 28px;
-    padding-top: 50px;
-    background: linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,.4)), url("../../public/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin:10px;
-    border-radius: 10px; 
+.backroundImage {
+  padding-left: 28px;
+  padding-top: 2rem;
+  background: linear-gradient(
+      var(--color-image-background),
+      var(--color-image-background)
+    ),
+    url("../../public/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 1.1rem;
+  border-radius: 10px;
 }
 
-.welcomeName{
-    color: #13678A;
-    font-size: 45px;
+.welcomeName {
+  font-size: 2em;
+  margin: 0;
+  display: inline;
+  font-weight: 500;
 }
 
-.welcome{
-    margin-bottom: 0;
-    
-
+.welcome {
+  margin-bottom: 0;
+  text-align: left;
+  margin-left: 2.5rem;
+  font-size: 1.7rem;
 }
 
-.description{
-    text-align: center;
-    margin: 0px auto;
-    line-height:2;
-    width: 80%;
-    border-radius: 10px;
-    font-weight: 800;
-    font-size: 20px;
-    font-weight: 500;
-    color:#400036;
-    background-color: rgba(251, 248, 248, 0.5);
-
-
+.description {
+  text-align: center;
+  margin: 0px auto;
+  margin-top: 0.7rem;
+  line-height: 2;
+  width: 90%;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background-color: var(--color-container-background);
+  padding: 1rem;
 }
 
-.gareebStatus{
-    margin-top: 50px;
+.gareebStatus {
+  margin-top: 0.7rem;
+  margin-bottom: 1.8rem;
+  width: 77%;
+  margin-inline: auto;
 }
 
-.takenOrGivenBox{
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    
+.takenOrGivenBox {
+  width: 12%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.8rem;
+  height: 5rem;
+  background-color: var(--color-bg-primary);
+  border-width: 0.1rem;
+  box-shadow: var(--color-box-shadow);
 }
 
-.takenOrGivenContatiner{
-    display: flex;
-    justify-content: space-evenly;
+.takenOrGivenContatiner {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--color-container-background);
+  margin: auto;
+  border-radius: 1.4rem;
+  padding-block: 1.2rem;
+  box-shadow: var(--color-box-shadow);
+}
 
+.takenGivenHeading {
+  color: var(--color-text-secondary);
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin: 0;
+  box-shadow: var(--color-sh);
+  letter-spacing: 0.15rem;
+  font-family: "Rajdhani";
+}
+
+.money {
+  font-size: 1.6rem;
+  letter-spacing: 0.2rem;
+  margin-bottom: 0;
+  margin-top: 0.4rem;
 }
