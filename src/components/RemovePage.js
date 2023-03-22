@@ -2,8 +2,10 @@ import { deleteData } from "@/utils/sampleFirebase";
 import React, { useState } from "react";
 import Styles from "../styles/EditDeletePage.module.css";
 import { HashLoader } from "react-spinners";
+import { useSelector } from "react-redux";
 
 function RemovePage(props) {
+  const theme = useSelector((state) => state.login.theme);
   const [isLoading, setIsLoading] = useState(false);
   const dataObject = {
     name: props.name,
@@ -23,7 +25,9 @@ function RemovePage(props) {
   return (
     <div className={Styles.editPage}>
       <div className={Styles.removeContainer}>
-        <h1>Are you sure you want to delete this entry</h1>
+        <h2 className={Styles.heading}>
+          Are you sure you want to delete this entry
+        </h2>
         <div
           style={{
             display: "flex",
@@ -43,8 +47,8 @@ function RemovePage(props) {
         </div>
         {isLoading ? (
           <HashLoader
-            color="red"
-            size="30px"
+            color={theme === "dark" ? "white" : "black"}
+            size="40"
             style={{ justifyContent: "center" }}
           />
         ) : null}

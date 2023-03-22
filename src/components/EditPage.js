@@ -4,7 +4,9 @@ import Styles from "../styles/EditDeletePage.module.css";
 const EditPage = (props) => {
   return (
     <div className={Styles.editPage}>
-      <h1 style={{ textAlign: "center" }}>Edit {props.status} hisab</h1>
+      <h2 className={Styles.heading}>
+        Edit {props.status === "singleUser" ? props.name : props.status} hisab
+      </h2>
       <MoneySection
         section={props.status}
         name={props.name}

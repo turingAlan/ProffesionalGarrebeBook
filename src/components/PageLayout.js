@@ -1,14 +1,15 @@
 import Image from "next/image";
 import kahta from "../../public/Khatabook.svg.png";
 import Styles from "../styles/PageLayout.module.css";
+import Navigation from "./Navigation";
+import SocialMediaLinks from "./SocialMediaLinks";
 
 export default function PageLayout(props) {
   return (
     <>
-      <div className={Styles.logoContainer}>
-        <Image src={kahta} alt="Hisab" width={230} height={55} />
-      </div>
+      <Navigation />
       <div>{props.children}</div>
+      <SocialMediaLinks />
     </>
   );
 }

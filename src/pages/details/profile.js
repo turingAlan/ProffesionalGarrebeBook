@@ -26,9 +26,9 @@ const Profile = (props) => {
     <PageLayout>
       {uid ? (
         <>
-          <h1 className={Styles.hisabDescription}>
+          <h2 className={Styles.hisabDescription}>
             Your current hisab list is
-          </h1>
+          </h2>
           <div className={Styles.bothListContainer}>
             <TotalList
               array={givenArray}

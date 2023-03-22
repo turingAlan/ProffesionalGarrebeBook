@@ -31,6 +31,7 @@ const Auth = () => {
   const [userName, setName] = useState("");
   const [uid, setUid] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const theme = useSelector((state) => state.login.theme);
   const onClick = () => {
     setIsLoading(true);
     if (authStatus === "login") {
@@ -113,7 +114,7 @@ const Auth = () => {
               setValue={setPassword}
               palceholder="Enter the password"
               type="password"
-              label="password"
+              label="Password"
               labelFor="password"
               icon={MdPassword}
               required={true}
@@ -151,7 +152,7 @@ const Auth = () => {
       </div>
       {isLoading ? (
         <div className={Styles.loading}>
-          <HashLoader color="black" size={80} />
+          <HashLoader color={theme === "dark" ? "white" : "black"} size={80} />
         </div>
       ) : null}
     </div>

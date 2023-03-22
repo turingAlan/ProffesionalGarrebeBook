@@ -30,7 +30,7 @@ const Navigation = (props) => {
       <li className={Styles.navigate}>
         <Link href={loginStatus ? "/profile" : "/auth/login"}>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <AiOutlineUser /> {loginStatus ? name : "login"}
+            {loginStatus ? name : <AiOutlineUser />}
           </div>
         </Link>
       </li>

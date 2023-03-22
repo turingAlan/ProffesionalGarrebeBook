@@ -10,6 +10,7 @@ body[data-theme="light"] {
   --color-box-shadow: 10px 5px 6px rgba(0, 0, 0, 0.3);
   --color-logo-shadow: rgba(0, 0, 0, 0.8);
   --color-container-background: rgba(255, 255, 255, 0.5);
+  --color-scheme: light;
 }
 
 body[data-theme="dark"] {
@@ -21,6 +22,7 @@ body[data-theme="dark"] {
   --color-box-shadow: 10px 5px 6px rgba(206, 201, 201, 0.359);
   --color-logo-shadow: #0fa;
   --color-container-background: rgba(0, 0, 0, 0.5);
+  --color-scheme: dark;
 }
 
 body {
@@ -198,6 +200,18 @@ h1 {
   border-radius: 1.4rem;
   background-color: var(--color-container-background);
   box-shadow: var(--color-box-shadow);
+}
+input {
+  color-scheme: var(--color-scheme);
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-text-primary) !important;
 }
 
 .border-io {

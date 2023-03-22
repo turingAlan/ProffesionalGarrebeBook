@@ -1,39 +1,45 @@
-.editPage{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    z-index: 1000;
-    background-color: rgba(207, 210, 215, 0.9);
-    height: 100%;
-    width: 100%;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    justify-content: center;
+.editPage {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  background-color: rgba(17, 83, 109, 0.8);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  justify-content: center;
 }
 
-.closeButton{
-    position: absolute;
-    top: 0;
-    right: 30px;
-    user-select: none;
+.heading {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 500;
+  letter-spacing: 0.15rem;
 }
 
-.closeButton:hover{
-    color:rgb(22, 193, 223);
+.closeButton {
+  position: absolute;
+  top: 0rem;
+  right: 10rem;
+  user-select: none;
+  font-size: 4rem;
 }
 
-.removeContainer{
-    width: 60%;
-    border: 1px black solid;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    align-self: center;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
+.closeButton:hover {
+  color: rgba(228, 34, 34, 0.652);
 }
 
+.removeContainer {
+  width: 50%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-self: center;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}

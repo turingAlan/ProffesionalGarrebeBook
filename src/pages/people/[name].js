@@ -2,18 +2,37 @@ const { useState, useEffect } = require("react");
 import PageLayout from "@/components/PageLayout";
 import TotalList from "@/components/TotalList";
 import { getData } from "@/utils/sampleFirebase";
+import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import Styles from "../../styles/Detail.module.css";
 
 const Profile = (props) => {
-  const name = router.query;
+  const router = useRouter();
+  const name = router.query.name;
   const [updateList, setUpdateList] = useState(true);
-  const [UserDataArray, setUserDataArray] = useState([]);
+  const [totalMoney, setTotalMoney] = useState(0);
+  const [givenMoney, setGivenMoney] = useState(0);
+  const [takenMoney, setTakenMoney] = useState(0);
+  const [userDataArray, setUserDataArray] = useState([]);
   const uid = useSelector((state) => state.login.uid);
+
+  const calculateTotalMoney = () => {
+    userDataArray.forEach((value) => {
+      console.log(value);
+      value.lendingStatus
+        ? setGivenMoney((prevState) => prevState + parseInt(value.amount))
+        : setTakenMoney((prevState) => prevState + parseInt(value.amount));
+    });
+    setTotalMoney(givenMoney - takenMoney);
+  };
+
   useEffect(() => {
     const redeclare = async () => {
       await getData(name, uid).then((value) => setUserDataArray(value));
+      // calculateTotalMoney();
     };
+
+    console.log(givenMoney);
     redeclare();
   }, [updateList]);
 
@@ -21,13 +40,14 @@ const Profile = (props) => {
     <PageLayout>
       {uid ? (
         <>
-          <h1 className={Styles.hisabDescription}>
-            Your current hisab list is
-          </h1>
+          <h2 className={Styles.hisabDescription}>
+            Your current hisab with {name}
+          </h2>
           <div className={Styles.bothListContainer}>
             <TotalList
-              array={givenArray}
-              status="given"
+              name={name}
+              array={userDataArray}
+              status="singleUser"
               setUpdateList={setUpdateList}
               totalMoney={givenMoney}
             />

@@ -15,6 +15,7 @@ const MoneySection = (props) => {
   const uid = useSelector((state) => state.login.uid);
   const userName = useSelector((state) => state.login.name);
   const clicked = useSelector((state) => state.login.clicked);
+  const theme = useSelector((state) => state.login.theme);
   const [name, setName] = useState("");
   const [money, setMoney] = useState("");
   const [reason, setReason] = useState("");
@@ -208,13 +209,23 @@ const MoneySection = (props) => {
         </div>
         <Button
           type="submit"
-          value={props.status === "edit" ? "Edit" : "Submit"}
+          value={
+            isLoading ? (
+              <HashLoader
+                size="30"
+                color={theme === "dark" ? "white" : "black"}
+              />
+            ) : props.status === "edit" ? (
+              "Edit"
+            ) : (
+              "Submit"
+            )
+          }
           disabled={error}
           onClick={() => {
             onClick();
           }}
         />
-        {isLoading ? <HashLoader size="21" color="blue" /> : null}
       </form>
     </div>
   );

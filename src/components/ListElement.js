@@ -39,9 +39,13 @@ const ListElement = (props) => {
           }
         >
           <li className={Styles.listElement}>₹{props.money}</li>
-          <Link href={`people/${props.name}`}>
-            <li className={Styles.listElement}>{props.name}</li>
-          </Link>
+          {props.type === "singleUser" ? (
+            <li className={Styles.listElement}>{props.nameStatus}</li>
+          ) : (
+            <Link href={`/people/${props.nameStatus}`} style={{ flex: 1 }}>
+              <li className={Styles.listElement}>{props.nameStatus}</li>
+            </Link>
+          )}
           {props.isHeader ? (
             <li className={Styles.listElement}>{reason}</li>
           ) : (

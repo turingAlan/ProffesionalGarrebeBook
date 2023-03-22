@@ -7,6 +7,7 @@ import MoneySection from "@/components/MoneySection";
 import WelcomeSection from "@/components/WelcomeSection";
 import { useState } from "react";
 import HisabSeciton from "@/components/HisabSection";
+import SocialMediaLinks from "@/components/SocialMediaLinks";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
