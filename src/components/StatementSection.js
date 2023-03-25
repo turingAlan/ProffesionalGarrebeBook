@@ -5,7 +5,7 @@ import MoneyStatus from "./MoneyStatus";
 import LoginToGo from "./LoginToGo";
 import { useSelector } from "react-redux";
 
-function HisabSection() {
+function StatementSection() {
   const [status, setstatus] = useState("Gave");
   const isLogin = useSelector((state) => state.login.isLogin);
   const Name = useSelector((state) => state.login.name);
@@ -25,7 +25,7 @@ function HisabSection() {
             fontWeight: "500",
           }}
         >
-          Enter a new Hisab
+          Enter a new Statement
         </h2>
 
         <div className={Styles.givenTakenContainer}>
@@ -58,4 +58,4 @@ function HisabSection() {
   );
 }
 
-export default HisabSection;
+export default StatementSection;

@@ -25,8 +25,6 @@ const Navigation = (props) => {
       <li className={Styles.navigate}>
         <ThemeToggle />
       </li>
-
-      <li className={Styles.navigate}>Hisab</li>
       <li className={Styles.navigate}>
         <Link href={loginStatus ? "/profile" : "/auth/login"}>
           <div style={{ display: "flex", alignItems: "center" }}>

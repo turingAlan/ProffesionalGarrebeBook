@@ -3,6 +3,8 @@ const { default: LoginToGo } = require("./LoginToGo");
 const { default: MoneyStatus } = require("./MoneyStatus");
 import Styles from "../styles/Welcome.module.css";
 
+import Strings from "@/Constants/Strings";
+
 const WelcomeSection = () => {
   const isLogin = useSelector((state) => state.login.isLogin);
   const Name = useSelector((state) => state.login.name);
@@ -17,7 +19,7 @@ const WelcomeSection = () => {
     <div className={Styles.alignWelcome}>
       <div className={Styles.backroundImage}>
         <div>
-          <h1 className={Styles.logo}>GARREBE BOKK</h1>
+          <h1 className={Styles.logo}>{Strings.AppName}</h1>
         </div>
         <div className={Styles.welcomeContainer}>
           <h2 className={Styles.welcome}>
@@ -26,12 +28,7 @@ const WelcomeSection = () => {
               {isLogin ? userName : "Guest"}
             </h1>
           </h2>
-          <p className={Styles.description}>
-            {" "}
-            here at garreb book we cannot make you rich but we definetly make
-            you feel chor like by keeping a record about how many people you
-            have taken money from and not given to them{" "}
-          </p>
+          <p className={Styles.description}> {Strings.Description} </p>
         </div>
       </div>
     </div>

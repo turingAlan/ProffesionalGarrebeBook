@@ -58,7 +58,7 @@ const ListElement = (props) => {
             </li>
           )}
           <li className={Styles.listElement}>
-            {props.date ? props.date : "Yaad nahi"}
+            {props.date ? props.date : "Didn't know"}
           </li>
         </ul>
         {hover && !props.isHeader ? (

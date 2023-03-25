@@ -7,14 +7,14 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDtv5Czrp4dwNqXnbtBV1oEJQC9AcLUBWQ",
-  authDomain: "hisabkitab-89ca8.firebaseapp.com",
-  projectId: "hisabkitab-89ca8",
-  storageBucket: "hisabkitab-89ca8.appspot.com",
-  messagingSenderId: "599763891135",
-  appId: "1:599763891135:web:67ffa4fc386805b54de70a"
+  apiKey: "AIzaSyCsGp6qMzIY7MlYf5tVK5Vq7aALVXsj9QY",
+  authDomain: "finance-manager-a851d.firebaseapp.com",
+  projectId: "finance-manager-a851d",
+  storageBucket: "finance-manager-a851d.appspot.com",
+  messagingSenderId: "816308606628",
+  appId: "1:816308606628:web:419f07102b67e46e46f831",
 };
 
 // Initialize Firebase
 export const firebaseApp = initializeApp(firebaseConfig);
-export const dataBase = getFirestore(firebaseApp)
+export const dataBase = getFirestore(firebaseApp);

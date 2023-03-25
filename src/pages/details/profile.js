@@ -27,7 +27,7 @@ const Profile = (props) => {
       {uid ? (
         <>
           <h2 className={Styles.hisabDescription}>
-            Your current hisab list is
+            Your current FinanceBook list is
           </h2>
           <div className={Styles.bothListContainer}>
             <TotalList

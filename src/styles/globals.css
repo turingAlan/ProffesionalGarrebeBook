@@ -230,8 +230,14 @@ input:-webkit-autofill {
   padding-bottom: 1.3rem;
 }
 
-.knownPersonListItem:hover {
+.knownPersonList {
+  position: absolute;
   background-color: var(--color-bg-primary);
+  width: 5rem;
+  height: 4.8rem;
+  overflow: auto;
+  top: 1.2rem;
+  left: 0.8rem;
 }
 
 /* button*/

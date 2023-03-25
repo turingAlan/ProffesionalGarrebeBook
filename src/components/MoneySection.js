@@ -1,8 +1,8 @@
 const { useState, useEffect } = require("react");
 const { default: Button } = require("./Button");
 const { default: Input } = require("./Input");
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { BiRupee, BiQuestionMark } from "react-icons/bi";
+import { AiOutlineUserAdd, AiOutlineDown } from "react-icons/ai";
+import { BiDollar, BiQuestionMark } from "react-icons/bi";
 import Validate from "../utils/Validation.js";
 import { useDispatch, useSelector } from "react-redux";
 import OnSubmit from "@/utils/OnStore.js";
@@ -50,22 +50,21 @@ const MoneySection = (props) => {
           position: "relative",
         }}
       >
-        <AiOutlineUserAdd
-          onClick={() => setShowList((prevValue) => !prevValue)}
-          className="knownPersonLogo"
-        />
-        {showList ? (
-          <div
-            style={{
-              position: "absolute",
-              backgroundColor: "white",
-              width: "5rem",
-              height: "4.8rem",
-              overflow: "auto",
-              top: "1.2rem",
-              left: "0.8rem",
-            }}
-          >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "end",
+          }}
+        >
+          <AiOutlineUserAdd
+            onClick={() => setShowList((prevValue) => !prevValue)}
+            className="knownPersonLogo"
+          />
+          <AiOutlineDown size={10} />
+        </div>
+        {showList && uid ? (
+          <div className="knownPersonList">
             <ul>
               {knownPersonArray.map((value) => {
                 return (
@@ -176,7 +175,7 @@ const MoneySection = (props) => {
             type="text"
             label="Money"
             labelFor="money"
-            icon={BiRupee}
+            icon={BiDollar}
             error={error}
             required={true}
             width="45%"

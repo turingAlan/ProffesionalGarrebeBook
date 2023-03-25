@@ -29,12 +29,12 @@ const MoneyStatus = ({ name, uid, onChange }) => {
             fontWeight: "500",
           }}
         >
-          , your current Garrebe status{" "}
+          , your current Financial status{" "}
         </h2>
         <div className={Styles.takenOrGivenContatiner}>
           <TotalGivenOrTaken status="givenMoney" uid={uid} />
-          <Link href="details/Profile">
-            <Button type="text" value="Detailed hisab" />
+          <Link href="details/profile">
+            <Button type="text" value="Detailed Statemnent" />
           </Link>
           <TotalGivenOrTaken status="takenMoney" uid={uid} />
         </div>

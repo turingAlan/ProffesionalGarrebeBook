@@ -5,7 +5,8 @@ const EditPage = (props) => {
   return (
     <div className={Styles.editPage}>
       <h2 className={Styles.heading}>
-        Edit {props.status === "singleUser" ? props.name : props.status} hisab
+        Edit {props.status === "singleUser" ? props.name : props.status}{" "}
+        Statement
       </h2>
       <MoneySection
         section={props.status}

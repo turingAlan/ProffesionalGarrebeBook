@@ -17,8 +17,9 @@ const Profile = (props) => {
   const uid = useSelector((state) => state.login.uid);
 
   const calculateTotalMoney = () => {
+    setGivenMoney(0);
+    setTakenMoney(0);
     userDataArray.forEach((value) => {
-      console.log(value);
       value.lendingStatus
         ? setGivenMoney((prevState) => prevState + parseInt(value.amount))
         : setTakenMoney((prevState) => prevState + parseInt(value.amount));
@@ -27,21 +28,32 @@ const Profile = (props) => {
   };
 
   useEffect(() => {
+    let tempArray = [];
     const redeclare = async () => {
-      await getData(name, uid).then((value) => setUserDataArray(value));
-      // calculateTotalMoney();
+      await getData(name, uid).then((value) => {
+        setUserDataArray(value);
+        calculateTotalMoney(userDataArray);
+      });
     };
 
-    console.log(givenMoney);
     redeclare();
+    calculateTotalMoney();
   }, [updateList]);
+  useEffect(() => {
+    const redeclare = async () => {
+      await getData(name, uid).then((value) => setUserDataArray(value));
+    };
+
+    redeclare();
+    calculateTotalMoney();
+  });
 
   return (
     <PageLayout>
       {uid ? (
         <>
           <h2 className={Styles.hisabDescription}>
-            Your current hisab with {name}
+            Your current Financial statement with {name}
           </h2>
           <div className={Styles.bothListContainer}>
             <TotalList
@@ -49,7 +61,7 @@ const Profile = (props) => {
               array={userDataArray}
               status="singleUser"
               setUpdateList={setUpdateList}
-              totalMoney={givenMoney}
+              totalMoney={totalMoney}
             />
           </div>
         </>

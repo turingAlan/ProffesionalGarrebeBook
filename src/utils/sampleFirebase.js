@@ -37,7 +37,7 @@ const addData = async (uid, name, data) => {
           knownPersonArray: arrayUnion(data.dataArray[0].name),
         });
         console.log("Document updated with ID: ", docRef.id);
-        alert("Hisab updated");
+        alert("statment updated");
       } catch (e) {
         console.error("Error updating document:", e);
         alert("problem in updating please try again");
@@ -130,7 +130,7 @@ const editData = async (uid, oldData, updatedData) => {
       [updatedData.name]: arrayUnion(updatedData),
     });
     console.log("Document updated with ID: ", docRef.id);
-    alert("Hisab updated");
+    alert("Statement updated");
   } catch (e) {
     console.error("Error updating document:", e);
     alert("problem in updating please try again");
